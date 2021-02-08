@@ -1,21 +1,6 @@
-const jwt = require('jsonwebtoken');
+const sign = _ => "Generated token"
 
-const { crypto: config } = require('../../config');
-
-const signOptions = {
-  algorithm: 'RS256',
-  expiresIn: '1h'
-}
-
-const sign = payload => jwt.sign(payload, config.jwt.privateKey, signOptions);
-
-const verify = token => new Promise((resolve, reject) => 
-  jwt.verify(
-    token, 
-    config.jwt.publicKey, 
-    (error, data) => error ? reject(error) : resolve(data)
-  )
-);
+const verify = _ => new Promise((resolve, reject) => resolve(true))
 
 module.exports = {
   sign,
